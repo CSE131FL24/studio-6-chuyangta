@@ -12,12 +12,15 @@ public class RecursiveMethods {
 	 *         ...)
 	 */
 	public static double geometricSum(int n) {
-		
-			// FIXME compute the geometric sum for the first n terms recursively
+		if (n==0) {// FIXME compute the geometric sum for the first n terms recursively
 			return 0;
-		
+		}
+		else {
+			return Math.pow(0.5, n) + geometricSum(n-1);
+		}
+
 	}
-	
+
 	/**
 	 * @param xCenter                       x-coordinate of the center of the circle
 	 *                                      at the current depth
@@ -26,11 +29,34 @@ public class RecursiveMethods {
 	 * @param radius                        radius of the circle at the current
 	 *                                      depth
 	 * @param radiusMinimumDrawingThreshold radius above which drawing should occur
+	 * 
+	 * 
+	 * 
 	 */
 	public static void circlesUponCircles(double xCenter, double yCenter, double radius,
 			double radiusMinimumDrawingThreshold) {
-		
+
 		// FIXME
+		
+		
+	
+		if (radiusMinimumDrawingThreshold>=radius) {
+			StdDraw.circle(xCenter, yCenter, radius);
+		}
+		else {
+			StdDraw.circle(xCenter, yCenter, radius);
+			if (radiusMinimumDrawingThreshold>=radius/3.0) {
+				return;
+			}
+			else {
+				 circlesUponCircles(xCenter-radius, yCenter, radius/3.0, radiusMinimumDrawingThreshold);
+				 circlesUponCircles(xCenter, yCenter-radius, radius/3.0, radiusMinimumDrawingThreshold);
+				 circlesUponCircles(xCenter+radius, yCenter, radius/3.0, radiusMinimumDrawingThreshold);
+				 circlesUponCircles(xCenter, yCenter+radius, radius/3.0, radiusMinimumDrawingThreshold);
+			}
+			
+		
+	}
 	}
 
 	/**
@@ -40,12 +66,12 @@ public class RecursiveMethods {
 	 * @return an array with the same data as the input but it reverse order
 	 */
 	public static int[] toReversed(int[] array) {
-		
-			// FIXME create a helper method that can recursively reverse the given array
-			return new int[0];
-		
+
+		// FIXME create a helper method that can recursively reverse the given array
+		return new int[0];
+
 	}
-	
+
 	/**
 	 * This method uses recursion to compute the greatest common divisor
 	 * for the two input values
@@ -55,10 +81,10 @@ public class RecursiveMethods {
 	 * @return greatest common divisor of p and q
 	 */
 	public static int gcd(int p, int q) {
-		
-			// FIXME compute the gcd of p and q using recursion
-			return 0;
-		
+
+		// FIXME compute the gcd of p and q using recursion
+		return 0;
+
 	}
 
 }
